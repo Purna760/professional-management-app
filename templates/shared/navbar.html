@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+            <i class="fas fa-chart-line"></i> Management System
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="dropdown">
+            <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fas fa-user-circle"></i> {{ current_user.first_name or current_user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="{{ url_for('client_profile') }}">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{ url_for('logout') }}">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
