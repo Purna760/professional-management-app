@@ -1,0 +1,38 @@
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Navigation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <nav class="nav flex-column">
+            {% if current_user.role == 'admin' %}
+            <a class="nav-link text-white {{ 'active' if request.endpoint == 'admin_dashboard' }}" 
+               href="{{ url_for('admin_dashboard') }}">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a class="nav-link text-white {{ 'active' if request.endpoint == 'admin_clients' }}" 
+               href="{{ url_for('admin_clients') }}">
+                <i class="fas fa-users"></i> Clients
+            </a>
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-project-diagram"></i> Projects
+            </a>
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-file-invoice-dollar"></i> Invoices
+            </a>
+            {% else %}
+            <a class="nav-link text-white {{ 'active' if request.endpoint == 'client_dashboard' }}" 
+               href="{{ url_for('client_dashboard') }}">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a class="nav-link text-white {{ 'active' if request.endpoint == 'client_profile' }}" 
+               href="{{ url_for('client_profile') }}">
+                <i class="fas fa-user"></i> Profile
+            </a>
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-project-diagram"></i> My Projects
+            </a>
+            {% endif %}
+        </nav>
+    </div>
+</div>
